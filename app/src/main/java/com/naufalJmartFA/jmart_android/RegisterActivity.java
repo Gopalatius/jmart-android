@@ -17,8 +17,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import model.Account;
-import request.RegisterRequest;
+import com.naufalJmartFA.jmart_android.request.RegisterRequest;
 
 public class RegisterActivity extends AppCompatActivity {
 

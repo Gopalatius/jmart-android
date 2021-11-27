@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import model.Account;
-import request.LoginRequest;
+import com.naufalJmartFA.jmart_android.model.Account;
+import com.naufalJmartFA.jmart_android.request.LoginRequest;
 
 public class LoginActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();

@@ -1,4 +1,4 @@
-package model;
+package com.naufalJmartFA.jmart_android.model;
 
 public class Account extends Serializable {
     public double balance;
