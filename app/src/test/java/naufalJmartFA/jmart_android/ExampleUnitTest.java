@@ -1,4 +1,4 @@
-package com.naufalJmartFA.jmart_android;
+package naufalJmartFA.jmart_android;
 
 import org.junit.Test;
 

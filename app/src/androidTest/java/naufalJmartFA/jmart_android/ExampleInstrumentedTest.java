@@ -1,4 +1,4 @@
-package com.naufalJmartFA.jmart_android;
+package naufalJmartFA.jmart_android;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.naufalJmartFA.jmart_android", appContext.getPackageName());
+        assertEquals("naufalJmartFA.jmart_android", appContext.getPackageName());
     }
 }

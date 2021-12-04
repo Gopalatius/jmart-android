@@ -1,4 +1,4 @@
-package com.naufalJmartFA.jmart_android.request;
+package naufalJmartFA.jmart_android.request;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -24,3 +24,4 @@ public class RegisterRequest extends StringRequest {
         return params;
     }
 }
+

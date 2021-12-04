@@ -1,6 +1,4 @@
-package com.naufalJmartFA.jmart_android.request;
-
-
+package naufalJmartFA.jmart_android.request;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -39,6 +37,5 @@ public class RequestFactory {
             public Map<String,String> getParams() { return params; }
         };
     }
-
 
 }
