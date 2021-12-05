@@ -60,11 +60,6 @@ public class LoginActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
             requestQueue.add(loginRequest);
         });
-        registerNow.setOnClickListener(v -> {
-            Response.Listener<String> listener = response -> {
-                Intent intentRegister = new Intent(LoginActivity.this, RegisterActivity.class );
-                startActivity(intentRegister);
-            };
-        });
+        registerNow.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
 }
