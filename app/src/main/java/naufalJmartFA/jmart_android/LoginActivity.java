@@ -25,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
     private static Account loggedAccount = null;
 
+    public static void fetchAccount(Account account) { loggedAccount = account;}
+
     public static Account getLoggedAccount(){
         return loggedAccount;
     }
@@ -45,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         loggedAccount = gson.fromJson(object.toString(),Account.class);
                         startActivity(intent);
+                        System.out.println(response);
                     }
-
                 }catch (JSONException e){
                     e.printStackTrace();
                     Toast.makeText(LoginActivity.this, "Error Login", Toast.LENGTH_LONG).show();
