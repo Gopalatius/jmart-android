@@ -1,6 +1,7 @@
 package naufalJmartFA.jmart_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 
 import android.os.Bundle;
@@ -40,9 +41,47 @@ public class AboutMeActivity extends AppCompatActivity {
 
         Button buttonTopUp = findViewById(R.id.buttonTopUp);
         Button buttonRegister = findViewById(R.id.buttonRegisterStore);
+        CardView registerCardView = findViewById(R.id.RegisterCardView);
+        TextView registerStoreText = findViewById(R.id.RegisterStoreText);
+        EditText registerStoreName = findViewById(R.id.RegisterStoreName);
+        EditText registerStoreAddress = findViewById(R.id.RegisterStoreAddress);
+        EditText registerStorePhoneNumber = findViewById(R.id.RegisterPhoneNumber);
+        TextView storeText = findViewById(R.id.storeText);
+        TextView textStoreName = findViewById(R.id.textStoreName);
+        TextView textStorePhoneNumber = findViewById(R.id.textStorePhoneNumber);
+        TextView realStoreName = findViewById(R.id.realStoreName);
+        TextView realStoreAddress = findViewById(R.id.realStoreAddress);
+        TextView realStorePhoneNumber = findViewById(R.id.realStorePhoneNumber);
+        Button buttonRealRegister = findViewById(R.id.buttonRegisterStoreReal);
+        Button buttonCancel = findViewById(R.id.buttonCancelRegisterStore);
         if (account.store == null){
             buttonRegister.setVisibility(View.VISIBLE);
+            registerCardView.setVisibility(View.INVISIBLE);
+        }else{
+            registerCardView.setVisibility(View.VISIBLE);
+            registerStoreText.setVisibility(View.INVISIBLE);
+            registerStoreName.setVisibility(View.INVISIBLE);
+            registerStoreAddress.setVisibility(View.INVISIBLE);
+            registerStorePhoneNumber.setVisibility(View.INVISIBLE);
         }
+        buttonRegister.setOnClickListener( v -> {
+            buttonRegister.setVisibility(View.INVISIBLE);
+            registerCardView.setVisibility(View.VISIBLE);
+            storeText.setVisibility(View.INVISIBLE);
+            textStoreName.setVisibility(View.INVISIBLE);
+            textStorePhoneNumber.setVisibility(View.INVISIBLE);
+            realStoreName.setVisibility(View.INVISIBLE);
+            realStoreAddress.setVisibility(View.INVISIBLE);
+            realStorePhoneNumber.setVisibility(View.INVISIBLE);
+        });
+        buttonCancel.setOnClickListener(v -> {
+            registerStoreName.setText("");
+            registerStoreAddress.setText("");
+            registerStorePhoneNumber.setText("");
+            registerCardView.setVisibility(View.INVISIBLE);
+            buttonRegister.setVisibility(View.VISIBLE);
+        });
+        //sedang membuat register request
         buttonTopUp.setOnClickListener(v -> {
 
             Response.Listener<String> listener = response -> {
