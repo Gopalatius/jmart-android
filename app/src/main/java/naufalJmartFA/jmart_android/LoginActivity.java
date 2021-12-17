@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,9 +62,10 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject object = new JSONObject(response);
                     if (object != null){
                         Toast.makeText(LoginActivity.this,"Login Success!",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         loggedAccount = gson.fromJson(object.toString(),Account.class);
-                        startActivity(intent);
+                        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+                        sessionManagement.saveSession(loggedAccount);
+                        movetoMainActivity();
                     }
                 }catch (JSONException e){
                     e.printStackTrace();
@@ -79,5 +81,19 @@ public class LoginActivity extends AppCompatActivity {
             passwordLogin.setText("");
         });
         registerNow.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+    }
+    private void movetoMainActivity(){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+//        int userId = sessionManagement.getSession();
+        if (loggedAccount != null){
+            movetoMainActivity();
+        }
     }
 }

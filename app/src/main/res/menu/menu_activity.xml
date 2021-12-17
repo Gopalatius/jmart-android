@@ -5,15 +5,19 @@
         android:id="@+id/search_menu"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="search"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/add_box_menu"
         android:icon="@drawable/ic_baseline_add_box_24"
         android:title="add_box"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/person_menu"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="person"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/logout_menu"
+        android:title="Logout"
+        app:showAsAction="never"/>
 </menu>

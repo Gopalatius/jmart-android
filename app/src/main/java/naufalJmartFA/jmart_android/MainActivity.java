@@ -2,6 +2,7 @@ package naufalJmartFA.jmart_android;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +18,12 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.Toast;
 
 
-
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
 
@@ -41,11 +44,37 @@ public class MainActivity extends AppCompatActivity {
     private boolean conditionUsed;
     private ProductCategory selectedProductCategory;
     private RadioButton usedOrNew;
+    private int selectedTab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Account account = LoginActivity.getLoggedAccount();
+        TabLayout tabLayOut = findViewById(R.id.tab);
+        CardView filterCard = findViewById(R.id.filterCard);
+        tabLayOut.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                selectedTab = tabLayOut.getSelectedTabPosition();
+                if (selectedTab == 1){
+                    filterCard.setVisibility(View.VISIBLE);
+                    //product card invisible
+                }else{
+                    filterCard.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         //Card untuk filter
         conditionGroup = findViewById(R.id.radioConditionFilter);
@@ -77,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             nameFilter.setText("");
             lowestPriceFilter.setText("");
             highestPriceFilter.setText("");
+            usedOrNew.setChecked(false);
         });
 
     }
@@ -90,11 +120,7 @@ public class MainActivity extends AppCompatActivity {
         Account account = LoginActivity.getLoggedAccount();
 
         MenuItem createProduct = menu.getItem(1);
-        if (account.store == null){
-            createProduct.setVisible(false);
-        }else{
-            createProduct.setVisible(true);
-        }
+        createProduct.setVisible(account.store != null);
         return true;
     }
 
@@ -102,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent createProductIntent = new Intent(MainActivity.this, CreateProductActivity.class);
         Intent aboutMeIntent = new Intent(MainActivity.this,AboutMeActivity.class);
+        Intent backtoLogin = new Intent(MainActivity.this, LoginActivity.class);
+        backtoLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         switch (item.getItemId()){
             case R.id.search_menu:
                 Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
@@ -114,6 +142,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "About me", Toast.LENGTH_SHORT).show();
                 startActivity(aboutMeIntent);
                 return true;
+            case R.id.logout_menu:
+                Toast.makeText(this, "Logout Success", Toast.LENGTH_SHORT).show();
+//                SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
+//                sessionManagement.removeSession();
+                LoginActivity.fetchAccount(null);
+                startActivity(backtoLogin);
             default:
                 return super.onOptionsItemSelected(item);
         }
