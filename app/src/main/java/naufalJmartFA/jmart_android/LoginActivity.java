@@ -21,15 +21,32 @@ import org.json.JSONObject;
 import naufalJmartFA.jmart_android.model.Account;
 import naufalJmartFA.jmart_android.request.LoginRequest;
 
+/**
+ * Login Activity class to login
+ * @author Muhammad Naufal Faza
+ */
 public class LoginActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
     private static Account loggedAccount = null;
 
+    /**
+     * Function to update loggedAccount from the backend
+     * @param account updated account from backend
+     */
     public static void fetchAccount(Account account) { loggedAccount = account;}
 
+    /**
+     * Getter for loggedAccount
+     * @return loggedAccount
+     */
     public static Account getLoggedAccount(){
         return loggedAccount;
     }
+
+    /**
+     * The function that is launched when LoginActivity is created for the first time.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
