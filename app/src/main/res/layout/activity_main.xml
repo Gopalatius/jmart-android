@@ -30,4 +30,190 @@
             android:text="Filter" />
 
     </com.google.android.material.tabs.TabLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="546dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/filterCard"
+            android:layout_width="410dp"
+            android:layout_height="544dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/nameFilterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="1dp"
+                    android:text="Name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/nameFilter"
+                    android:layout_width="383dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameFilterText" />
+
+                <TextView
+                    android:id="@+id/LowestPriceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Lowest Price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameFilter" />
+
+                <TextView
+                    android:id="@+id/HighestPriceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="77dp"
+                    android:text="Highest Price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameFilter" />
+
+                <EditText
+                    android:id="@+id/lowestPriceFilter"
+                    android:layout_width="156dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:hint="Lowest Price"
+                    android:inputType="number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/LowestPriceText" />
+
+                <EditText
+                    android:id="@+id/highestPriceFilter"
+                    android:layout_width="156dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:ems="10"
+                    android:hint="Highest Price"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/HighestPriceText" />
+
+                <TextView
+                    android:id="@+id/toText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="to"
+                    app:layout_constraintEnd_toStartOf="@+id/highestPriceFilter"
+                    app:layout_constraintStart_toEndOf="@+id/lowestPriceFilter"
+                    app:layout_constraintTop_toBottomOf="@+id/nameFilter" />
+
+                <RadioGroup
+                    android:id="@+id/radioConditionFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="36dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/highestPriceFilter">
+
+                    <RadioButton
+                        android:id="@+id/newButtonFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickCondition"
+                        android:text="NEW"
+                        tools:layout_editor_absoluteX="203dp"
+                        tools:layout_editor_absoluteY="328dp" />
+
+                    <RadioButton
+                        android:id="@+id/usedButtonFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickCondition"
+                        android:text="USED"
+                        tools:layout_editor_absoluteX="271dp"
+                        tools:layout_editor_absoluteY="328dp" />
+
+                </RadioGroup>
+
+                <Spinner
+                    android:id="@+id/spinnerCategoryFilter"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:entries="@array/spinnerCategory"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioConditionFilter" />
+
+                <TextView
+                    android:id="@+id/productConditionTextFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="23dp"
+                    android:text="Product Condition"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lowestPriceFilter" />
+
+                <TextView
+                    android:id="@+id/ProductCategoryTextFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="27dp"
+                    android:text="Product Category"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/productConditionTextFilter" />
+
+                <Button
+                    android:id="@+id/applyFilter"
+                    android:layout_width="180dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginBottom="18dp"
+                    android:text="Apply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/clearFilter"
+                    android:layout_width="180dp"
+                    android:layout_height="56dp"
+                    android:layout_marginEnd="21dp"
+                    android:layout_marginBottom="18dp"
+                    android:text="Clear"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

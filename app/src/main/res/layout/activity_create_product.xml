@@ -148,7 +148,7 @@
                     android:id="@+id/newButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New"
+                    android:text="NEW"
                     android:onClick="onClickCondition"
                     tools:layout_editor_absoluteX="203dp"
                     tools:layout_editor_absoluteY="328dp" />
@@ -157,7 +157,7 @@
                     android:id="@+id/usedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Used"
+                    android:text="USED"
                     android:onClick="onClickCondition"
                     tools:layout_editor_absoluteX="271dp"
                     tools:layout_editor_absoluteY="328dp" />

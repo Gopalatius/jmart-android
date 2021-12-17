@@ -8,49 +8,80 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
+
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+
+
+import java.util.ArrayList;
 
 import naufalJmartFA.jmart_android.model.Account;
-import naufalJmartFA.jmart_android.request.LoginRequest;
+import naufalJmartFA.jmart_android.model.Product;
+import naufalJmartFA.jmart_android.model.ProductCategory;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
+    private static ArrayList<Product> products = new ArrayList<>();
+    private ArrayAdapter<Product> adapter;
+    private ListView listView;
+    private RadioGroup conditionGroup;
+    private boolean conditionUsed;
+    private ProductCategory selectedProductCategory;
+    private RadioButton usedOrNew;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Account account = LoginActivity.getLoggedAccount();
+
+        //Card untuk filter
+        conditionGroup = findViewById(R.id.radioConditionFilter);
+        EditText nameFilter = findViewById(R.id.nameFilter);
+        EditText lowestPriceFilter = findViewById(R.id.lowestPriceFilter);
+        EditText highestPriceFilter = findViewById(R.id.highestPriceFilter);
+        Spinner spinnerCategory = findViewById(R.id.spinnerCategoryFilter);
+        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this,R.array.spinnerCategory, android.R.layout.simple_spinner_item);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(categoryAdapter);
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedCategory = parent.getItemAtPosition(position).toString();
+                selectedProductCategory = ProductCategory.valueOf(selectedCategory);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        Button applyFilterButton = findViewById(R.id.applyFilter);
+        applyFilterButton.setOnClickListener(v -> {
+            //akan melakukan paginasi
+        });
+        Button clearFilterButton = findViewById(R.id.clearFilter);
+        clearFilterButton.setOnClickListener(v -> {
+            nameFilter.setText("");
+            lowestPriceFilter.setText("");
+            highestPriceFilter.setText("");
+        });
 
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Response.Listener<String> listener = response -> {
-//            try{
-//                JSONObject object = new JSONObject(response);
-//                if (object != null){
-//                    LoginActivity.fetchAccount(gson.fromJson(object.toString(),Account.class));
-//                }
-//            }catch (JSONException e){
-//                e.printStackTrace();
-//                Toast.makeText(MainActivity.this, "Error fetching", Toast.LENGTH_LONG).show();
-//            }
-//        };
-//        Response.ErrorListener errorListener = error -> Toast.makeText(MainActivity.this,"Error fetching", Toast.LENGTH_LONG);
-//        LoginRequest loginRequest = new LoginRequest(LoginActivity.getLoggedAccount().email,
-//                LoginActivity.getLoggedAccount().password, listener, errorListener);
-//        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-//        requestQueue.add(loginRequest);
-//    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,5 +118,13 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+    public void onClickCondition (View view){
+        usedOrNew = findViewById(conditionGroup.getCheckedRadioButtonId());
+        if (usedOrNew.getText().toString().equals("NEW")){
+            conditionUsed = false;
+        }else if(usedOrNew.getText().toString().equals("USED")){
+            conditionUsed = true;
+        }
     }
 }
