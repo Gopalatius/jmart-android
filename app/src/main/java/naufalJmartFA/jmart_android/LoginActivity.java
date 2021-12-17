@@ -70,14 +70,13 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Error Login", Toast.LENGTH_LONG).show();
                 }
             };
-            Response.ErrorListener errorListener = error -> Toast.makeText(LoginActivity.this,"Error Login", Toast.LENGTH_LONG);
+            Response.ErrorListener errorListener = error -> Toast.makeText(LoginActivity.this,"Error Login", Toast.LENGTH_LONG).show();
             LoginRequest loginRequest = new LoginRequest(emailLogin.getText().toString(),
                     passwordLogin.getText().toString(), listener, errorListener);
             RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
             requestQueue.add(loginRequest);
             emailLogin.setText("");
             passwordLogin.setText("");
-
         });
         registerNow.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }

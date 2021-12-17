@@ -66,7 +66,7 @@
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Weight"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Price"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editWeight" />
@@ -94,7 +94,7 @@
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Discount"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editPrice" />
@@ -103,11 +103,12 @@
                 android:id="@+id/textCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="17dp"
                 android:text="Condition"
                 android:textSize="18sp"
-                app:layout_constraintTop_toBottomOf="@+id/editDiscount"
-                tools:layout_editor_absoluteX="12dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editDiscount" />
 
             <TextView
                 android:id="@+id/textCategory"
@@ -132,7 +133,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textCategory" />
 
             <RadioGroup
-                android:id="@+id/radioGroup"
+                android:id="@+id/radioConditionGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="97dp"
@@ -148,6 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New"
+                    android:onClick="onClickCondition"
                     tools:layout_editor_absoluteX="203dp"
                     tools:layout_editor_absoluteY="328dp" />
 
@@ -156,6 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Used"
+                    android:onClick="onClickCondition"
                     tools:layout_editor_absoluteX="271dp"
                     tools:layout_editor_absoluteY="328dp" />
 
@@ -170,7 +173,7 @@
                 android:entries="@array/spinnerCategory"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="@+id/textCategory"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/radioConditionGroup" />
 
             <Spinner
                 android:id="@+id/spinnerShipmentPlan"
