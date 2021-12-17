@@ -19,8 +19,17 @@ import org.json.JSONObject;
 
 import naufalJmartFA.jmart_android.request.RegisterRequest;
 
+/**
+ * Register Activity for registration
+ * @author Muhammad Naufal Faza
+ */
 public class RegisterActivity extends AppCompatActivity {
 
+
+    /**
+     * Method onCreate is launched when the activity is launched for the first time.
+     * @param savedInstanceState ...
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

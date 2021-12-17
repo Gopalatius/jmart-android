@@ -31,26 +31,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Response.Listener<String> listener = response -> {
-            try{
-                JSONObject object = new JSONObject(response);
-                if (object != null){
-                    LoginActivity.fetchAccount(gson.fromJson(object.toString(),Account.class));
-                }
-            }catch (JSONException e){
-                e.printStackTrace();
-                Toast.makeText(MainActivity.this, "Error fetching", Toast.LENGTH_LONG).show();
-            }
-        };
-        Response.ErrorListener errorListener = error -> Toast.makeText(MainActivity.this,"Error fetching", Toast.LENGTH_LONG);
-        LoginRequest loginRequest = new LoginRequest(LoginActivity.getLoggedAccount().email,
-                LoginActivity.getLoggedAccount().password, listener, errorListener);
-        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-        requestQueue.add(loginRequest);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Response.Listener<String> listener = response -> {
+//            try{
+//                JSONObject object = new JSONObject(response);
+//                if (object != null){
+//                    LoginActivity.fetchAccount(gson.fromJson(object.toString(),Account.class));
+//                }
+//            }catch (JSONException e){
+//                e.printStackTrace();
+//                Toast.makeText(MainActivity.this, "Error fetching", Toast.LENGTH_LONG).show();
+//            }
+//        };
+//        Response.ErrorListener errorListener = error -> Toast.makeText(MainActivity.this,"Error fetching", Toast.LENGTH_LONG);
+//        LoginRequest loginRequest = new LoginRequest(LoginActivity.getLoggedAccount().email,
+//                LoginActivity.getLoggedAccount().password, listener, errorListener);
+//        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+//        requestQueue.add(loginRequest);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
