@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         loggedAccount = gson.fromJson(object.toString(),Account.class);
                         startActivity(intent);
-                        System.out.println(response);
                     }
                 }catch (JSONException e){
                     e.printStackTrace();
