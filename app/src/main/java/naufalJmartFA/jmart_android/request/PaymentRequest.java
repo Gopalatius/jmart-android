@@ -22,7 +22,7 @@ public class PaymentRequest extends StringRequest {
         params.put("productId", Integer.toString(productId));
         params.put("productCount", Integer.toString(productCount));
         params.put("shipmentAddress", shipmentAddress);
-        params.put("shipmentPlans", Byte.toString(shipmentPlans));
+        params.put("shipmentPlan", Byte.toString(shipmentPlans));
 
     }
     public Map<String,String> getParams(){

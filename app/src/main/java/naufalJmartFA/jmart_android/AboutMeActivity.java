@@ -122,8 +122,7 @@ public class AboutMeActivity extends AppCompatActivity {
             Response.Listener<String> listener = response -> {
                 if (response.equals("true")){
                     Toast.makeText(AboutMeActivity.this, "Top Up Sukses", Toast.LENGTH_LONG).show();
-                    account.balance += Double.parseDouble(editTopUp.getText().toString());
-                    LoginActivity.fetchAccount(account);
+
                 }
             };
             Response.ErrorListener errorListener = error -> Toast.makeText(AboutMeActivity.this,"Top Up Error", Toast.LENGTH_LONG);
@@ -131,6 +130,8 @@ public class AboutMeActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(AboutMeActivity.this);
             requestQueue.add(topUpRequest);
             balanceAccount.setText(Double.toString(Double.parseDouble(balanceAccount.getText().toString())+Double.parseDouble(editTopUp.getText().toString())));
+            account.balance += Double.parseDouble(editTopUp.getText().toString());
+            LoginActivity.fetchAccount(account);
             editTopUp.setText("");
 
         });

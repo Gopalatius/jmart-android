@@ -1,5 +1,9 @@
 package naufalJmartFA.jmart_android.model;
 
+/**
+ * Product class with same model as backend
+ * @author Muhammad Naufal Faza
+ */
 public class Product extends Serializable{
     public int accountId;
     public ProductCategory category;
