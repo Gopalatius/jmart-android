@@ -47,7 +47,7 @@ import naufalJmartFA.jmart_android.request.RequestFactory;
 
 public class MainActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
-    private static ArrayList<Product> products = new ArrayList<>();
+    public static ArrayList<Product> products = new ArrayList<>();
     private ArrayAdapter<Product> adapter;
     private ListView listView;
     private RadioGroup conditionGroup;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private ProductCategory selectedProductCategory;
     private RadioButton usedOrNew;
     private int selectedTab;
-    public int selectedProduct;
+    public static int selectedProduct;
     private ListView productListView;
     private EditText nameFilter;
     private EditText lowestPriceFilter;
@@ -119,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
         });
         Button applyFilterButton = findViewById(R.id.applyFilter);
         applyFilterButton.setOnClickListener(v -> {
-            //akan melakukan paginasi
+            int page = Integer.parseInt(pageEditText.getText().toString()) - 1;
+            populateListView(page);
         });
         Button clearFilterButton = findViewById(R.id.clearFilter);
         clearFilterButton.setOnClickListener(v -> {
@@ -132,8 +133,22 @@ public class MainActivity extends AppCompatActivity {
         //Card untuk Product
         pageEditText = findViewById(R.id.pageEditText);
         Button prev = findViewById(R.id.buttonPrevProduct);
+        prev.setOnClickListener(v ->{
+            pageEditText.setText(String.format("%d",Integer.parseInt(pageEditText.getText().toString())-1));
+            int page = Integer.parseInt(pageEditText.getText().toString()) - 1;
+            populateListView(page);
+        });
         Button next = findViewById(R.id.buttonNextProduct);
+        next.setOnClickListener(v ->{
+            pageEditText.setText(String.format("%d",Integer.parseInt(pageEditText.getText().toString())+1));
+            int page = Integer.parseInt(pageEditText.getText().toString()) - 1;
+            populateListView(page);
+        });
         Button go = findViewById(R.id.buttonGoProduct);
+        go.setOnClickListener(v -> {
+            int page = Integer.parseInt(pageEditText.getText().toString()) - 1;
+            populateListView(page);
+        });
         productListView = findViewById(R.id.productListView);
         Response.Listener<String> listener = response -> {
             try{

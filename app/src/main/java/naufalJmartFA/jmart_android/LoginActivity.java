@@ -63,8 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (object != null){
                         Toast.makeText(LoginActivity.this,"Login Success!",Toast.LENGTH_LONG).show();
                         loggedAccount = gson.fromJson(object.toString(),Account.class);
-                        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-                        sessionManagement.saveSession(loggedAccount);
                         movetoMainActivity();
                     }
                 }catch (JSONException e){
