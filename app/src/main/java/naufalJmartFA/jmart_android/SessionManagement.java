@@ -5,6 +5,11 @@ import android.content.SharedPreferences;
 
 import naufalJmartFA.jmart_android.model.Account;
 
+/**
+ * Session management
+ * @author Muhammad Naufal Faza
+ * @deprecated Not used because there is a simpler way to manage session.
+ */
 public class SessionManagement {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;

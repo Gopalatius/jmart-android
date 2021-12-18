@@ -10,10 +10,11 @@ public class Product extends Serializable{
     public byte shipmentPlans;
     public int weight;
 
+    @Override
     public String toString(){
 //        return "Name: "+name+"\nWeight: "+weight+"\nconditionUsed: "+conditionUsed+
 //                "\nprice: "+price+"\ndiscount: "+discount+"\nCategory: "+category+
 //                "\naccountId: "+accountId;
-        return "Name: "+name;
+        return name;
     }
 }
