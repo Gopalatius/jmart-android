@@ -19,8 +19,15 @@ import naufalJmartFA.jmart_android.model.Product;
 import naufalJmartFA.jmart_android.request.LoginRequest;
 import naufalJmartFA.jmart_android.request.PaymentRequest;
 
+/**
+ * Product Detail Activity class
+ */
 public class ProductDetailActivity extends AppCompatActivity {
 
+    /**
+     * Method onCreate for ProductDetailActivity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

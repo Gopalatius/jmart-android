@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Account loggedAccount = null;
 
     /**
-     * Function to update loggedAccount from the backend
+     * Function to update loggedAccount from the backend (setter)
      * @param account updated account from backend
      */
     public static void fetchAccount(Account account) { loggedAccount = account;}
@@ -80,11 +80,19 @@ public class LoginActivity extends AppCompatActivity {
         });
         registerNow.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
+
+    /**
+     * Move to main Activity with setFlags (reference from Youtube)
+     */
     private void movetoMainActivity(){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+    /**
+     * Check for login session
+     */
     @Override
     protected void onStart() {
         super.onStart();

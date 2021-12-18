@@ -44,7 +44,10 @@ import naufalJmartFA.jmart_android.model.Product;
 import naufalJmartFA.jmart_android.model.ProductCategory;
 import naufalJmartFA.jmart_android.request.RequestFactory;
 
-
+/**
+ * Main activity class
+ * @author Muhammad Naufal Faza
+ */
 public class MainActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
     public static ArrayList<Product> products = new ArrayList<>();
@@ -62,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText highestPriceFilter;
     private EditText pageEditText;
 
-
+    /**
+     * On create layour
+     * @param savedInstanceState instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -263,6 +269,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * On click to check which button is pressed
+     * @param view view?
+     */
     public void onClickCondition (View view){
         usedOrNew = findViewById(conditionGroup.getCheckedRadioButtonId());
         if (usedOrNew.getText().toString().equals("NEW")){

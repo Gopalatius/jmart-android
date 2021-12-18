@@ -25,13 +25,21 @@ import naufalJmartFA.jmart_android.model.ProductCategory;
 import naufalJmartFA.jmart_android.request.CreateProductRequest;
 import naufalJmartFA.jmart_android.request.LoginRequest;
 
-
+/**
+ * Activity to create product
+ * @author Muhammad Naufal Faza
+ */
 public class CreateProductActivity extends AppCompatActivity {
     private RadioGroup conditionGroup;
     private RadioButton usedOrNew;
     private boolean conditionUsed;
     private ProductCategory selectedProductCategory;
     private byte byteShipmentPlans;
+
+    /**
+     * oncreate method for activity create product
+     * @param savedInstanceState instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +132,11 @@ public class CreateProductActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * Choose radio button ID
+     * @param view view?
+     */
     public void onClickCondition (View view){
         usedOrNew = findViewById(conditionGroup.getCheckedRadioButtonId());
         if (usedOrNew.getText().toString().equals("NEW")){

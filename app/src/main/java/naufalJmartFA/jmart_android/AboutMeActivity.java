@@ -24,8 +24,16 @@ import naufalJmartFA.jmart_android.request.LoginRequest;
 import naufalJmartFA.jmart_android.request.RegisterStoreRequest;
 import naufalJmartFA.jmart_android.request.TopUpRequest;
 
+/**
+ * Activity in about me (person logo)
+ * @author Muhammad Naufal Faza
+ */
 public class AboutMeActivity extends AppCompatActivity {
 
+    /**
+     * on created layour
+     * @param savedInstanceState instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
