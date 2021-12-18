@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayOut = findViewById(R.id.tab);
         CardView filterCard = findViewById(R.id.filterCard);
         CardView productCard = findViewById(R.id.productCard);
+        //default card
+        productCard.setVisibility(View.VISIBLE);
+        filterCard.setVisibility(View.GONE);
         tabLayOut.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

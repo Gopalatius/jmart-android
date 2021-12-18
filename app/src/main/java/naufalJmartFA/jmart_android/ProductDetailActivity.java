@@ -44,7 +44,11 @@ public class ProductDetailActivity extends AppCompatActivity {
         Product choosenProduct = MainActivity.products.get(MainActivity.selectedProduct);
         detailProductName.setText(choosenProduct.name);
         category.setText(choosenProduct.category.toString());
-        condition.setText(Boolean.toString(choosenProduct.conditionUsed));
+        if (!choosenProduct.conditionUsed){
+            condition.setText("NEW");
+        }else{
+            condition.setText("USED");
+        }
         weight.setText(Integer.toString(choosenProduct.weight));
         price.setText(Double.toString(choosenProduct.price));
         discount.setText(Double.toString(choosenProduct.discount));
